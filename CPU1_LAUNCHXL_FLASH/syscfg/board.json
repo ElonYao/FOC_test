@@ -1,0 +1,8 @@
+{
+    "interruptInfo" : [
+        {
+            "interruptName": "INT_Motor_IS_ADC_1",
+            "interruptHandler": "INT_Motor_IS_ADC_1_ISR"
+        }
+    ]
+}

@@ -1,0 +1,366 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/boards/LAUNCHXL_F280039C" --device "F28003x" --part "F28003x_100PZ" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @v2CliArgs --device "TMS320F280039C" --package "100PZ" --board "/boards/LAUNCHXL_F280039C" --context "system" --product "C2000WARE@5.04.00.00"
+ * @versions {"tool":"1.21.0+3721"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const adc              = scripting.addModule("/driverlib/adc.js", {}, false);
+const adc1             = adc.addInstance();
+const adc2             = adc.addInstance();
+const adc3             = adc.addInstance();
+const analog           = scripting.addModule("/driverlib/analog.js", {}, false);
+const analog1          = analog.addInstance();
+const asysctl          = scripting.addModule("/driverlib/asysctl.js");
+const can              = scripting.addModule("/driverlib/can.js", {}, false);
+const can1             = can.addInstance();
+const cmpss            = scripting.addModule("/driverlib/cmpss.js", {}, false);
+const cmpss1           = cmpss.addInstance();
+const cmpss2           = cmpss.addInstance();
+const cmpss3           = cmpss.addInstance();
+const cputimer         = scripting.addModule("/driverlib/cputimer.js", {}, false);
+const cputimer1        = cputimer.addInstance();
+const cputimer2        = cputimer.addInstance();
+const epwm             = scripting.addModule("/driverlib/epwm.js", {}, false);
+const epwm1            = epwm.addInstance();
+const epwm2            = epwm.addInstance();
+const epwm3            = epwm.addInstance();
+const gpio             = scripting.addModule("/driverlib/gpio.js", {}, false);
+const gpio1            = gpio.addInstance();
+const gpio2            = gpio.addInstance();
+const i2c              = scripting.addModule("/driverlib/i2c.js", {}, false);
+const i2c1             = i2c.addInstance();
+const inputxbar_input  = scripting.addModule("/driverlib/inputxbar_input.js", {}, false);
+const inputxbar_input1 = inputxbar_input.addInstance();
+const sci              = scripting.addModule("/driverlib/sci.js", {}, false);
+const sci1             = sci.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+adc1.socHighPriorityMode            = "ADC_PRI_ALL_HIPRI";
+adc1.adcClockPrescaler              = "ADC_CLK_DIV_2_0";
+adc1.soc1Channel                    = "ADC_CH_ADCIN11";
+adc1.soc1SampleWindow               = 14;
+adc1.soc1IndependentNameMode        = true;
+adc1.soc1Trigger                    = "ADC_TRIGGER_EPWM1_SOCA";
+adc1.interruptPulseMode             = "ADC_PULSE_END_OF_CONV";
+adc1.interrupt1SOCSource            = "ADC_SOC_NUMBER3";
+adc1.enableInterrupt1               = true;
+adc1.ppb1SOCNumber                  = "ADC_SOC_NUMBER1";
+adc1.$name                          = "Motor_IS_ADC";
+adc1.enabledSOCs                    = ["ADC_SOC_NUMBER1","ADC_SOC_NUMBER2","ADC_SOC_NUMBER3"];
+adc1.soc1Name                       = "Motor_IU_ADC";
+adc1.soc2IndependentNameMode        = true;
+adc1.soc2Name                       = "Motor_VU_ADC";
+adc1.soc2Channel                    = "ADC_CH_ADCIN2";
+adc1.soc2SampleWindow               = 20;
+adc1.soc3IndependentNameMode        = true;
+adc1.soc3Channel                    = "ADC_CH_ADCIN6";
+adc1.soc3SampleWindow               = 20;
+adc1.soc3Name                       = "Motor_Vdc_ADC";
+adc1.soc3Trigger                    = "ADC_TRIGGER_EPWM1_SOCA";
+adc1.registerInterrupts             = ["1"];
+adc1.ppb2SOCNumber                  = "ADC_SOC_NUMBER2";
+adc1.soc2Trigger                    = "ADC_TRIGGER_EPWM1_SOCA";
+adc1.enabledPPBs                    = ["ADC_PPB_NUMBER1"];
+adc1.enabledInts                    = ["ADC_INT_NUMBER1"];
+adc1.enableInterrupt1ContinuousMode = true;
+
+adc2.$name                   = "myADC0";
+adc2.adcBase                 = "ADCB_BASE";
+adc2.adcClockPrescaler       = "ADC_CLK_DIV_2_0";
+adc2.socHighPriorityMode     = "ADC_PRI_ALL_HIPRI";
+adc2.enabledSOCs             = ["ADC_SOC_NUMBER1","ADC_SOC_NUMBER2"];
+adc2.soc1IndependentNameMode = true;
+adc2.soc1Name                = "Motor_IV_ADC";
+adc2.soc1Channel             = "ADC_CH_ADCIN12";
+adc2.soc1SampleWindow        = 14;
+adc2.soc2IndependentNameMode = true;
+adc2.soc2Name                = "Motor_VV_ADC";
+adc2.soc2Channel             = "ADC_CH_ADCIN9";
+adc2.soc2SampleWindow        = 20;
+adc2.soc1Trigger             = "ADC_TRIGGER_EPWM1_SOCA";
+adc2.ppb1SOCNumber           = "ADC_SOC_NUMBER1";
+adc2.interruptPulseMode      = "ADC_PULSE_END_OF_CONV";
+adc2.ppb2SOCNumber           = "ADC_SOC_NUMBER2";
+adc2.soc2Trigger             = "ADC_TRIGGER_EPWM1_SOCA";
+adc2.enabledPPBs             = ["ADC_PPB_NUMBER1"];
+adc2.useInterrupts           = false;
+
+adc3.$name                   = "myADC1";
+adc3.adcBase                 = "ADCC_BASE";
+adc3.adcClockPrescaler       = "ADC_CLK_DIV_2_0";
+adc3.socHighPriorityMode     = "ADC_PRI_ALL_HIPRI";
+adc3.interruptPulseMode      = "ADC_PULSE_END_OF_CONV";
+adc3.enabledSOCs             = ["ADC_SOC_NUMBER1","ADC_SOC_NUMBER2"];
+adc3.soc1IndependentNameMode = true;
+adc3.soc1Name                = "Motor_IW_ADC";
+adc3.soc1Channel             = "ADC_CH_ADCIN3";
+adc3.soc1SampleWindow        = 14;
+adc3.soc1Trigger             = "ADC_TRIGGER_EPWM1_SOCA";
+adc3.soc2IndependentNameMode = true;
+adc3.soc2Name                = "Motor_VW_ADC";
+adc3.soc2Channel             = "ADC_CH_ADCIN4";
+adc3.soc2SampleWindow        = 20;
+adc3.ppb1SOCNumber           = "ADC_SOC_NUMBER1";
+adc3.ppb2SOCNumber           = "ADC_SOC_NUMBER2";
+adc3.soc2Trigger             = "ADC_TRIGGER_EPWM1_SOCA";
+adc3.enabledPPBs             = ["ADC_PPB_NUMBER1"];
+adc3.useInterrupts           = false;
+
+can1.$name                 = "myCAN0";
+can1.msgObjsUsed           = [1,2];
+can1.enableInterrupt       = true;
+can1.interruptLine         = ["CAN_GLOBAL_INT_CANINT0"];
+can1.interruptFlags        = ["CAN_INT_ERROR","CAN_INT_IE0","CAN_INT_STATUS"];
+can1.can.$assign           = "CANA";
+can1.can.can_rxPin.$assign = "boosterpack1.19";
+can1.can.can_txPin.$assign = "boosterpack2.48";
+can1.msgObj1.$name         = "msgObj0";
+can1.msgObj1.msgID         = 256;
+can1.msgObj1.msgType       = "CAN_MSG_OBJ_TYPE_TX";
+can1.msgObj1.msgLen        = 8;
+can1.msgObj2.$name         = "msgObj1";
+can1.msgObj2.msgID         = 257;
+can1.msgObj2.flags         = ["CAN_MSG_OBJ_RX_INT_ENABLE","CAN_MSG_OBJ_USE_ID_FILTER"];
+can1.msgObj2.msgIDMask     = 1023;
+scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to SPIA BP on the LaunchPad F280039C\\. Consider selecting it in \'use hardware\' above\\. @@@.+?@@@", can1.can, "can_rxPin");
+
+cmpss1.enableModule         = true;
+cmpss1.highCTRIPOUT         = "CMPSS_TRIPOUT_FILTER";
+cmpss1.highCTRIP            = "CMPSS_TRIP_FILTER";
+cmpss1.$name                = "CMPSS_U";
+cmpss1.lowCTRIPOUT          = "CMPSS_TRIPOUT_FILTER";
+cmpss1.lowCTRIP             = "CMPSS_TRIP_FILTER";
+cmpss1.lowCompInvert        = true;
+cmpss1.thresholdHigh        = 30;
+cmpss1.samplePrescaleHigh   = 32;
+cmpss1.sampleWindowHigh     = 32;
+cmpss1.initFilterHigh       = true;
+cmpss1.samplePrescaleLow    = 32;
+cmpss1.sampleWindowLow      = 32;
+cmpss1.thresholdLow         = 30;
+cmpss1.initFilterLow        = true;
+cmpss1.hysteresisVal        = "2";
+cmpss1.clearFilterLatchLow  = true;
+cmpss1.clearFilterLatchHigh = true;
+cmpss1.dacValHigh           = 3584;
+cmpss1.dacValLow            = 512;
+cmpss1.asysCMPHPMXSELValue  = "1";
+cmpss1.asysCMPLPMXSELValue  = "1";
+
+cmpss2.cmpssBase            = "CMPSS3_BASE";
+cmpss2.$name                = "CMPSS_V";
+cmpss2.asysCMPHPMXSELValue  = "1";
+cmpss2.asysCMPLPMXSELValue  = "1";
+cmpss2.enableModule         = true;
+cmpss2.highCTRIPOUT         = "CMPSS_TRIPOUT_FILTER";
+cmpss2.highCTRIP            = "CMPSS_TRIP_FILTER";
+cmpss2.lowCompInvert        = true;
+cmpss2.lowCTRIPOUT          = "CMPSS_TRIPOUT_FILTER";
+cmpss2.lowCTRIP             = "CMPSS_TRIP_FILTER";
+cmpss2.hysteresisVal        = "2";
+cmpss2.initFilterHigh       = true;
+cmpss2.clearFilterLatchHigh = true;
+cmpss2.samplePrescaleHigh   = 32;
+cmpss2.sampleWindowHigh     = 32;
+cmpss2.thresholdHigh        = 30;
+cmpss2.initFilterLow        = true;
+cmpss2.clearFilterLatchLow  = true;
+cmpss2.samplePrescaleLow    = 32;
+cmpss2.sampleWindowLow      = 32;
+cmpss2.thresholdLow         = 30;
+cmpss2.dacValLow            = 512;
+cmpss2.dacValHigh           = 3584;
+
+cmpss3.cmpssBase            = "CMPSS4_BASE";
+cmpss3.$name                = "CMPSS_W";
+cmpss3.enableModule         = true;
+cmpss3.hysteresisVal        = "2";
+cmpss3.highCTRIPOUT         = "CMPSS_TRIPOUT_FILTER";
+cmpss3.highCTRIP            = "CMPSS_TRIP_FILTER";
+cmpss3.dacValHigh           = 3584;
+cmpss3.initFilterHigh       = true;
+cmpss3.clearFilterLatchHigh = true;
+cmpss3.samplePrescaleHigh   = 32;
+cmpss3.sampleWindowHigh     = 32;
+cmpss3.thresholdHigh        = 30;
+cmpss3.asysCMPHPMXSELValue  = "1";
+cmpss3.lowCompInvert        = true;
+cmpss3.lowCTRIPOUT          = "CMPSS_TRIPOUT_FILTER";
+cmpss3.lowCTRIP             = "CMPSS_TRIP_FILTER";
+cmpss3.dacValLow            = 512;
+cmpss3.initFilterLow        = true;
+cmpss3.samplePrescaleLow    = 32;
+cmpss3.sampleWindowLow      = 32;
+cmpss3.thresholdLow         = 30;
+cmpss3.asysCMPLPMXSELValue  = "1";
+
+analog1.useCase          = "CUSTOM";
+adc1.analog              = analog1;
+analog1.$name            = "Motor_IU_ADC_Mux";
+adc2.analog              = analog1;
+adc3.analog              = analog1;
+analog1.useInterfacePins = ["A11/B10/C0","A14/B14/C4","A2/B6/C9","A3, C7/B9","A6","C2/B12","C3/A7"];
+cmpss1.analog            = analog1;
+cmpss2.analog            = analog1;
+cmpss3.analog            = analog1;
+
+cputimer1.$name        = "dataPrint";
+cputimer1.startTimer   = true;
+cputimer1.timerPeriod  = 120000;
+cputimer1.cputimerBase = "CPUTIMER1_BASE";
+
+cputimer2.emulationMode            = "CPUTIMER_EMULATIONMODE_RUNFREE";
+cputimer2.enableInterrupt          = true;
+cputimer2.registerInterrupts       = true;
+cputimer2.startTimer               = true;
+cputimer2.$name                    = "mainControlloop";
+cputimer2.timerPeriod              = 60000;
+cputimer2.timerInt.enableInterrupt = true;
+
+epwm1.$hardware                                                  = system.deviceData.board.components.BP_SITE_1.subComponents.PWM_LOC1;
+epwm1.$name                                                      = "PhaseU";
+epwm1.epwmTimebase_hsClockDiv                                    = "EPWM_HSCLOCK_DIVIDER_1";
+epwm1.epwmTimebase_counterMode                                   = "EPWM_COUNTER_MODE_UP_DOWN";
+epwm1.epwmTimebase_periodLoadMode                                = "EPWM_PERIOD_DIRECT_LOAD";
+epwm1.epwmDeadband_polarityFED                                   = "EPWM_DB_POLARITY_ACTIVE_LOW";
+epwm1.epwmDeadband_enableRED                                     = true;
+epwm1.epwmDeadband_enableFED                                     = true;
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_UP_CMPA   = "EPWM_AQ_OUTPUT_HIGH";
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_DOWN_CMPA = "EPWM_AQ_OUTPUT_LOW";
+epwm1.epwmTimebase_syncInPulseSource                             = "EPWM_SYNC_IN_PULSE_SRC_DISABLE";
+epwm1.epwmCounterCompare_cmpB                                    = 500;
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_shadowMode            = true;
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_B_shadowMode            = true;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerEnable                  = true;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerSource                  = "EPWM_SOC_TBCTR_D_CMPC";
+epwm1.epwmTimebase_syncOutPulseMode                              = ["EPWM_SYNC_OUT_PULSE_ON_CNTR_ZERO"];
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_ZERO      = "EPWM_AQ_OUTPUT_LOW";
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_PERIOD    = "EPWM_AQ_OUTPUT_HIGH";
+epwm1.epwmTripZone_oneShotSource                                 = ["EPWM_TZ_SIGNAL_OSHT1"];
+epwm1.epwmTimebase_period                                        = 3000;
+epwm1.epwmTripZone_EPWM_TZ_ACTION_EVENT_TZA                      = "EPWM_TZ_ACTION_LOW";
+epwm1.epwmTripZone_EPWM_TZ_ACTION_EVENT_TZB                      = "EPWM_TZ_ACTION_LOW";
+epwm1.epwmTimebase_counterModeAfterSync                          = "EPWM_COUNT_MODE_UP_AFTER_SYNC";
+epwm1.epwmCounterCompare_cmpC                                    = 10;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerEventPrescalar          = "1";
+epwm1.epwmCounterCompare_cmpA                                    = 500;
+epwm1.epwmDeadband_delayRED                                      = 10;
+epwm1.epwmDeadband_delayFED                                      = 10;
+
+epwm2.copyFrom                                                   = "PhaseU";
+epwm2.$name                                                      = "PhaseV";
+epwm2.$hardware                                                  = system.deviceData.board.components.BP_SITE_1.subComponents.PWM_LOC2;
+epwm2.epwmTimebase_hsClockDiv                                    = "EPWM_HSCLOCK_DIVIDER_1";
+epwm2.epwmTimebase_counterMode                                   = "EPWM_COUNTER_MODE_UP_DOWN";
+epwm2.epwmTimebase_periodLoadMode                                = "EPWM_PERIOD_DIRECT_LOAD";
+epwm2.epwmTimebase_counterModeAfterSync                          = "EPWM_COUNT_MODE_UP_AFTER_SYNC";
+epwm2.epwmDeadband_polarityFED                                   = "EPWM_DB_POLARITY_ACTIVE_LOW";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_UP_CMPA   = "EPWM_AQ_OUTPUT_HIGH";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_DOWN_CMPA = "EPWM_AQ_OUTPUT_LOW";
+epwm2.epwmTimebase_syncInPulseSource                             = "EPWM_SYNC_IN_PULSE_SRC_DISABLE";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_A_shadowMode            = true;
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_B_shadowMode            = true;
+epwm2.epwmCounterCompare_cmpB                                    = 100;
+epwm2.epwmDeadband_enableRED                                     = true;
+epwm2.epwmDeadband_enableFED                                     = true;
+epwm2.epwmTimebase_periodLink                                    = "EPWM_LINK_WITH_EPWM_1";
+epwm2.epwmTripZone_EPWM_TZ_ACTION_EVENT_TZA                      = "EPWM_TZ_ACTION_LOW";
+epwm2.epwmTripZone_EPWM_TZ_ACTION_EVENT_TZB                      = "EPWM_TZ_ACTION_LOW";
+epwm2.epwmTripZone_oneShotSource                                 = ["EPWM_TZ_SIGNAL_OSHT1"];
+epwm2.epwmTimebase_period                                        = 3000;
+epwm2.epwmCounterCompare_cmpA                                    = 500;
+epwm2.epwmDeadband_delayFED                                      = 10;
+epwm2.epwmDeadband_delayRED                                      = 10;
+
+epwm3.$name                                                      = "PhaseW";
+epwm3.copyFrom                                                   = "PhaseV";
+epwm3.$hardware                                                  = system.deviceData.board.components.BP_SITE_1.subComponents.PWM_LOC3;
+epwm3.epwmTimebase_hsClockDiv                                    = "EPWM_HSCLOCK_DIVIDER_1";
+epwm3.epwmTimebase_counterMode                                   = "EPWM_COUNTER_MODE_UP_DOWN";
+epwm3.epwmTimebase_periodLoadMode                                = "EPWM_PERIOD_DIRECT_LOAD";
+epwm3.epwmTimebase_counterModeAfterSync                          = "EPWM_COUNT_MODE_UP_AFTER_SYNC";
+epwm3.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_UP_CMPA   = "EPWM_AQ_OUTPUT_HIGH";
+epwm3.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_DOWN_CMPA = "EPWM_AQ_OUTPUT_LOW";
+epwm3.epwmDeadband_polarityFED                                   = "EPWM_DB_POLARITY_ACTIVE_LOW";
+epwm3.epwmDeadband_enableRED                                     = true;
+epwm3.epwmDeadband_enableFED                                     = true;
+epwm3.epwmTimebase_syncInPulseSource                             = "EPWM_SYNC_IN_PULSE_SRC_DISABLE";
+epwm3.epwmActionQualifier_EPWM_AQ_OUTPUT_A_shadowMode            = true;
+epwm3.epwmActionQualifier_EPWM_AQ_OUTPUT_B_shadowMode            = true;
+epwm3.epwmTimebase_periodLink                                    = "EPWM_LINK_WITH_EPWM_1";
+epwm3.epwmTripZone_EPWM_TZ_ACTION_EVENT_TZA                      = "EPWM_TZ_ACTION_LOW";
+epwm3.epwmTripZone_EPWM_TZ_ACTION_EVENT_TZB                      = "EPWM_TZ_ACTION_LOW";
+epwm3.epwmTripZone_oneShotSource                                 = ["EPWM_TZ_SIGNAL_OSHT1"];
+epwm3.epwmTimebase_period                                        = 3000;
+epwm3.epwmCounterCompare_cmpA                                    = 500;
+epwm3.epwmCounterCompare_cmpB                                    = 500;
+epwm3.epwmDeadband_delayRED                                      = 10;
+epwm3.epwmDeadband_delayFED                                      = 10;
+
+gpio1.$name             = "GATE_Control";
+gpio1.direction         = "GPIO_DIR_MODE_OUT";
+gpio1.writeInitialValue = true;
+gpio1.initialValue      = 1;
+gpio1.gpioPin.$assign   = "boosterpack1.13";
+
+gpio2.$name           = "OT_INPUT";
+gpio2.qualMode        = "GPIO_QUAL_3SAMPLE";
+gpio2.gpioPin.$assign = "boosterpack1.34";
+
+i2c1.$name              = "AS5600";
+i2c1.bitCount           = "I2C_BITCOUNT_8";
+i2c1.useFifo            = false;
+i2c1.emulationMode      = "I2C_EMULATION_FREE_RUN";
+i2c1.$hardware          = system.deviceData.board.components.BP_SITE_1.subComponents.I2C;
+i2c1.registerInterrupts = true;
+i2c1.enabledInterrupts  = ["I2C_INT_REG_ACCESS_RDY","I2C_INT_STOP_CONDITION"];
+i2c1.targetAddress      = 0x36;
+i2c1.useInterrupts      = false;
+i2c1.sdaQual.padConfig  = "STD";
+i2c1.sclQual.padConfig  = "STD";
+
+inputxbar_input1.$name         = "OT_inputX";
+inputxbar_input1.inputxbarGpio = "GPIO33";
+inputxbar_input1.inputxbarLock = true;
+
+sci1.$name         = "PC_SCI";
+sci1.$hardware     = system.deviceData.board.components.XDS_UART.subComponents.XDS_SCI_INST2;
+sci1.useInterrupts = false;
+sci1.rxQual.$name  = "myGPIOQUAL0";
+sci1.txQual.$name  = "myGPIOQUAL1";
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+analog1.analog.$suggestSolution                  = "ANALOG";
+analog1.analog["a11/b10/c0Pin"].$suggestSolution = "boosterpack1.27";
+analog1.analog["a14/b14/c4Pin"].$suggestSolution = "boosterpack1.26";
+analog1.analog["a2/b6/c9Pin"].$suggestSolution   = "boosterpack1.24";
+analog1.analog["a3, c7/b9Pin"].$suggestSolution  = "boosterpack1.25";
+analog1.analog.a6Pin.$suggestSolution            = "boosterpack1.23";
+analog1.analog["c2/b12Pin"].$suggestSolution     = "boosterpack1.28";
+analog1.analog["c3/a7Pin"].$suggestSolution      = "boosterpack1.29";
+epwm1.epwm.$suggestSolution                      = "EPWM1";
+epwm1.epwm.epwm_aPin.$suggestSolution            = "boosterpack1.40";
+epwm1.epwm.epwm_bPin.$suggestSolution            = "boosterpack1.39";
+epwm2.epwm.$suggestSolution                      = "EPWM2";
+epwm2.epwm.epwm_aPin.$suggestSolution            = "boosterpack1.38";
+epwm2.epwm.epwm_bPin.$suggestSolution            = "boosterpack1.37";
+epwm3.epwm.$suggestSolution                      = "EPWM6";
+epwm3.epwm.epwm_aPin.$suggestSolution            = "boosterpack1.36";
+epwm3.epwm.epwm_bPin.$suggestSolution            = "boosterpack1.35";
+i2c1.i2c.$suggestSolution                        = "I2CB";
+i2c1.i2c.i2c_sdaPin.$suggestSolution             = "boosterpack1.10";
+i2c1.i2c.i2c_sclPin.$suggestSolution             = "boosterpack1.9";
+sci1.sci.$suggestSolution                        = "SCIB";
+sci1.sci.sci_rxPin.$suggestSolution              = "boosterpack2.43";
+sci1.sci.sci_txPin.$suggestSolution              = "boosterpack2.44";
